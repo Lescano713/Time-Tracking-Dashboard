@@ -53,7 +53,7 @@ div{
         padding: 10px;
         align-items: center;
         grid-template-rows: 50% 50%;
-        grid-template-columns: 30% 60%;
+        grid-template-columns: 30% 65%;
         grid-template-areas:
         'img small'
         'img h1';
@@ -96,6 +96,11 @@ article:not(.articleUser){
     height: 10em;
     background-repeat: no-repeat;
     background-position: 90% -4%;
+    :hover{
+        background-color: hsl(234, 42%, 43%);
+        cursor: pointer;
+        transition: all 0.4s ease-in-out;
+    }
     .timeframesDiv{
         display: grid;
         grid-template-columns: 0.6fr 1fr;
@@ -107,6 +112,7 @@ article:not(.articleUser){
         gap: 2px 5px;
         h2{
             font-weight: 200;
+            font-size: clamp(1.75rem, 1.214rem + 1.429vw, 2.5rem);
         }
         small{
             color: var(--PaleBlue);
@@ -131,7 +137,7 @@ article:not(.articleUser){
     main{
         grid-template-columns: repeat(auto-fit ,minmax(13em,1fr));
         max-width: 90%;
-        width: 60em;
+        width: 62em;
         .articleUser{
             grid-row: span 2;
             align-items: normal;
