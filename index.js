@@ -23,6 +23,7 @@ function showContent(datas){
     divProfile.append(imgProfile, smallReport, h1Name);
     const pDaily = document.createElement('p');
     pDaily.textContent = 'Daily';
+    pDaily.style.color = "white";
 
     const pWeekly = document.createElement('p');
     pWeekly.textContent = 'Weekly';
@@ -36,11 +37,6 @@ function showContent(datas){
 
     datas.activity.forEach(activity => {
         const article = document.createElement('article');
-
-        const imgActivity = document.createElement('img');
-        // imgActivity.src = activity.image;
-        // imgActivity.alt = 'image-activity'
-        // imgActivity.classList.add('imgActivity');
         const divTimer = document.createElement('div');
         divTimer.classList.add('timeframesDiv');
 
@@ -52,7 +48,9 @@ function showContent(datas){
         article.style.backgroundColor = `${activity.color}`;
         article.style.backgroundImage = `url(${activity.image})`;
         const h2 = document.createElement('h2');
+        h2.textContent = `${activity.timeframes.daily.current}hrs`;
         const smallTime = document.createElement('small')
+        smallTime.textContent = `Last Daily - ${activity.timeframes.daily.previous}hrs`;
         divTimer.append(p,imgIcon,h2,smallTime);
         article.append(divTimer);
         main.append(article);
@@ -61,15 +59,25 @@ function showContent(datas){
         console.log(activity.timeframes.daily.current);
 
         pDaily.addEventListener('click', e =>{
-            typeTime(activity.timeframes.daily, "daily");
+            typeTime(activity.timeframes.daily, "Daily");
+            pDaily.style.color = "white";
+            pWeekly.style.color = "hsl(236, 100%, 87%)";
+            pMonthly.style.color = "hsl(236, 100%, 87%)"
         });
 
         pWeekly.addEventListener('click', e =>{
-            typeTime(activity.timeframes.weekly, "weekly");
+            typeTime(activity.timeframes.weekly, "Weekly");
+            pWeekly.style.color = "white";
+            pMonthly.style.color = "hsl(236, 100%, 87%)"
+            pDaily.style.color = "hsl(236, 100%, 87%)";
+            
         });
 
         pMonthly.addEventListener('click', e =>{
-            typeTime(activity.timeframes.monthly, "monthly");
+            typeTime(activity.timeframes.monthly, "Monthly");
+            pMonthly.style.color = "white";
+            pWeekly.style.color = "hsl(236, 100%, 87%)";
+            pDaily.style.color = "hsl(236, 100%, 87%)";
         });
         
 

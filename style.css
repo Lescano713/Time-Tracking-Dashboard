@@ -29,10 +29,11 @@ body{
     align-items: center;
     justify-content: center;
     min-height: 100dvh;
+    padding: 1em;
 }
 main{
     display: grid;
-    width: 90%;
+    /* width: 90%; */
     gap: 20px;
 }
 article ,div{
@@ -48,55 +49,129 @@ article{
 div{
     background-color: var(--DarkBlue);
 }
-.divProfile{
-    background-color: var(--BluePrincipal);
-    display: grid;
-    padding: 10px;
-    align-items: center;
-    grid-template-rows: 50% 50%;
-    grid-template-columns: 40% 60%;
-    grid-template-areas:
-    'img small'
-    'img h1';
-    img{
-        width: 70%;
-        grid-area: img;
-        border: 3px solid white;
-        border-radius: 50%;
-        justify-self: center;
+.articleUser{
+    background-color: var(--DarkBlue);
+    .divProfile{
+        background-color: var(--BluePrincipal);
+        display: grid;
+        padding: 10px;
+        align-items: center;
+        grid-template-rows: 50% 50%;
+        grid-template-columns: 40% 60%;
+        grid-template-areas:
+        'img small'
+        'img h1';
+        img{
+            width: 70%;
+            grid-area: img;
+            border: 3px solid white;
+            border-radius: 50%;
+            justify-self: center;
+        }
+        h1{
+            grid-area: h1;
+            align-self: self-start;
+            margin: 0;
+            font-weight: 100;
+            font-size: 20px;
+        }
+        small{
+            grid-area: small;
+            align-self: self-end;
+            font-weight: 100;
+        }
     }
-    h1{
-        grid-area: h1;
-        align-self: self-start;
-        margin: 0;
-        font-weight: 100;
-        font-size: 20px;
-    }
-    small{
-        grid-area: small;
-        align-self: self-end;
-        font-weight: 100;
+    .divOptions{
+        display: flex;
+        justify-content: space-around;
+        p{
+            cursor: pointer;
+            color: var(--PaleBlue);
+        }
+        p:hover{
+            color: white;
+        }
     }
 }
-.divOptions{
-    display: flex;
-    justify-content: space-around;
-    p{
-        cursor: pointer;
-    }
-}
+
 
 
 article:not(.articleUser){
-    height: 10.3em;
+    height: 10em;
     background-repeat: no-repeat;
     background-position: 90% -4%;
-    /* background-size: 30%; */
     .timeframesDiv{
         display: grid;
-        grid-template-columns: 0.8fr 1fr;
+        grid-template-columns: 0.6fr 1fr;
         align-items: center;
         justify-items: center;
+        padding: 0.5em 1.3em ;
         border-radius: 20px 20px 10px 9px;
+        grid-template-rows: 3em 3em;
+        gap: 2px 5px;
+        h2{
+            font-weight: 200;
+        }
+        small{
+            color: var(--PaleBlue);
+        }
+        p{
+            font-weight: 450;
+            margin-bottom: -5px;
+        }
+        p,h2{
+            justify-self: flex-start;
+        }
+        img{
+            margin-bottom: -20px;
+        }
+        small, img{
+            justify-self: flex-end;
+        }
+    }
+}
+
+@media (min-width: 600px ) {
+    main{
+        grid-template-columns: repeat(auto-fit ,minmax(13em,1fr));
+        max-width: 95%;
+        width: 60em;
+        .articleUser{
+            grid-row: span 2;
+            align-items: normal;
+            .divProfile{
+                grid-template-columns: 80%;
+                grid-template-rows: 1fr 0.2fr 0.5fr;
+                grid-template-areas: unset;
+                padding-left: 1.5em;
+                h1,small,img{
+                    grid-area: unset;
+                    align-self: self-start;
+                }
+                img{
+                    width: 60%;
+                    justify-self: flex-start;
+                    align-self: center;
+                }
+            }
+            .divOptions{
+                flex-direction: column;
+                padding-left: 1.5em;
+                p{
+                    margin: 0;
+                }
+            }
+        }
+    }
+    article:not(.articleUser){
+        height: 13em;
+        .timeframesDiv{
+            grid-template-columns: 1fr 0.5fr;
+            padding-bottom: 1em;
+            small{
+                grid-row: 3;
+                justify-self: self-start;
+            }
+        }
     }
 }
