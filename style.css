@@ -29,11 +29,10 @@ body{
     align-items: center;
     justify-content: center;
     min-height: 100dvh;
-    padding: 1em;
+    padding: 1.5em 1.1em;
 }
 main{
     display: grid;
-    /* width: 90%; */
     gap: 20px;
 }
 article ,div{
@@ -42,9 +41,6 @@ article ,div{
 article{
     display: grid;
     align-items: end;
-    /* p{
-        font-weight: 500;
-    } */
 }
 div{
     background-color: var(--DarkBlue);
@@ -57,7 +53,7 @@ div{
         padding: 10px;
         align-items: center;
         grid-template-rows: 50% 50%;
-        grid-template-columns: 40% 60%;
+        grid-template-columns: 30% 60%;
         grid-template-areas:
         'img small'
         'img h1';
@@ -73,7 +69,7 @@ div{
             align-self: self-start;
             margin: 0;
             font-weight: 100;
-            font-size: 20px;
+            font-size: clamp(1.375rem, 1.111rem + 1.058vw, 2.063rem);
         }
         small{
             grid-area: small;
@@ -131,19 +127,19 @@ article:not(.articleUser){
     }
 }
 
-@media (min-width: 600px ) {
+@media (min-width: 550px ) {
     main{
         grid-template-columns: repeat(auto-fit ,minmax(13em,1fr));
-        max-width: 95%;
+        max-width: 90%;
         width: 60em;
         .articleUser{
             grid-row: span 2;
             align-items: normal;
             .divProfile{
                 grid-template-columns: 80%;
-                grid-template-rows: 1fr 0.2fr 0.5fr;
+                grid-template-rows: 0.5fr 0.2fr 0.5fr;
                 grid-template-areas: unset;
-                padding-left: 1.5em;
+                padding-left: 1.7em;
                 h1,small,img{
                     grid-area: unset;
                     align-self: self-start;
@@ -151,7 +147,10 @@ article:not(.articleUser){
                 img{
                     width: 60%;
                     justify-self: flex-start;
-                    align-self: center;
+                    align-self: self-end;
+                }
+                small{
+                    align-self: flex-end;
                 }
             }
             .divOptions{
@@ -163,10 +162,13 @@ article:not(.articleUser){
             }
         }
     }
+    article{
+        max-width: 17em;
+    }
     article:not(.articleUser){
         height: 13em;
         .timeframesDiv{
-            grid-template-columns: 1fr 0.5fr;
+            grid-template-columns: 1fr 0.3fr;
             padding-bottom: 1em;
             small{
                 grid-row: 3;
