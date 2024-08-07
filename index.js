@@ -60,24 +60,18 @@ function showContent(datas){
 
         pDaily.addEventListener('click', e =>{
             typeTime(activity.timeframes.daily, "Daily");
-            pDaily.style.color = "white";
-            pWeekly.style.color = "hsl(236, 100%, 87%)";
-            pMonthly.style.color = "hsl(236, 100%, 87%)"
+            changeColor(pDaily,[pWeekly,pMonthly]);
         });
 
         pWeekly.addEventListener('click', e =>{
             typeTime(activity.timeframes.weekly, "Weekly");
-            pWeekly.style.color = "white";
-            pMonthly.style.color = "hsl(236, 100%, 87%)"
-            pDaily.style.color = "hsl(236, 100%, 87%)";
+            changeColor(pWeekly,[pDaily,pMonthly]);
             
         });
 
         pMonthly.addEventListener('click', e =>{
             typeTime(activity.timeframes.monthly, "Monthly");
-            pMonthly.style.color = "white";
-            pWeekly.style.color = "hsl(236, 100%, 87%)";
-            pDaily.style.color = "hsl(236, 100%, 87%)";
+            changeColor(pMonthly,[pDaily,pWeekly])
         });
         
 
@@ -88,4 +82,11 @@ function showContent(datas){
 
     });
     
+}
+
+function changeColor(target, options){
+    target.style.color = "white";
+    options.forEach(option =>{
+        option.style.color = "hsl(236, 100%, 87%)";
+    })
 }

@@ -35,7 +35,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./screenshot/desktop.gif)
 
 
 ## My process
@@ -53,21 +53,41 @@ Users should be able to:
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+<p>I learned about using media queries along with the property <b>grid-template-columns: repeat(auto-fit, minmax(13em, 1fr))</b> to ensure that the articles cover the entire container on screens larger than 550px. Additionally, I used the pseudo-selector <b>:not()</b> to apply styles while excluding a specific element.</p>
 
-To see how you can add code snippets, see below:
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
 ```css
-.proud-of-this-css {
-  color: papayawhip;
-}
+  @media (min-width: 550px ) {
+      main{
+          grid-template-columns: repeat(auto-fit ,minmax(13em,1fr));
+          max-width: 90%;
+          width: 62em;}
+      article:not(.articleUser){
+              height: 13em;
+              .timeframesDiv{
+                  grid-template-columns: 1fr 0.3fr;
+                  padding-bottom: 1em;
+                  small{
+                      grid-row: 3;
+                      justify-self: self-start;
+                  }
+              }
+          }
+  }
 ```
+
+<p>To retrieve JSON data, I used the <b>fetch API</b>. To streamline the code and enhance maintainability, I implemented several helper functions. These functions were designed to handle repetitive tasks and improve overall code efficiency.</p>
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+fetch('data.json')
+    .then(response => response.json())
+    .then(data => showContent(data[0]));
+
+function changeColor(target, options){
+    target.style.color = "white";
+    options.forEach(option =>{
+        option.style.color = "hsl(236, 100%, 87%)";
+    })
 }
 ```
 
@@ -75,6 +95,8 @@ const proudOfThisFunc = () => {
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+<p>- <strong>JavaScript Best Practices</strong>: Improving JavaScript code readability and performance by refactoring and leveraging ES6 features like template literals and destructuring.</p>
+<p>- <strong>Integrating APIs</strong>: Fetching and displaying data from external APIs to create more dynamic and interactive web applications.</p>
+<p>These areas will help me build more sophisticated, user-friendly, and performant web applications.</p>
 
 
